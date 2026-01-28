@@ -317,7 +317,7 @@ sequenceDiagram
 
 ---
 
-## Resume-Relevant Impact
+## Relevant Impact
 
 This project demonstrates competency in:
 
@@ -397,8 +397,7 @@ ara/
 ---
 
 ## License
-
-MIT
+[MIT](LICENSE)
 
 ---
 
