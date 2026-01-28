@@ -214,54 +214,7 @@ This enables:
 
 ## Workflow Graphs
 
-### DOT Format
-
-```dot
-digraph ARA {
-    rankdir=LR;
-    node [shape=box, style=rounded];
-
-    START [shape=circle];
-    END [shape=doublecircle];
-
-    START -> chat;
-    chat -> tools [label="tool_call?"];
-    tools -> chat;
-    chat -> END [label="no tools"];
-}
-```
-
-### Mermaid Format
-
-```mermaid
-graph LR
-    START((Start)) --> chat[Chat Node]
-    chat -->|tool_call| tools[Tool Node]
-    tools --> chat
-    chat -->|complete| END((End))
-```
-
-### Sequence Diagram
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Streamlit
-    participant LangGraph
-    participant Groq
-    participant Tools
-
-    User->>Streamlit: "What's the latest AI news?"
-    Streamlit->>LangGraph: stream(message, config)
-    LangGraph->>Groq: invoke(messages, tools)
-    Groq-->>LangGraph: tool_call: news_search
-    LangGraph->>Tools: execute(news_search)
-    Tools-->>LangGraph: [article1, article2, ...]
-    LangGraph->>Groq: invoke(messages + tool_result)
-    Groq-->>LangGraph: "Here are the latest AI news..."
-    LangGraph-->>Streamlit: stream tokens
-    Streamlit-->>User: rendered response
-```
+![LangGraph Workflow](workflow_graph.png)
 
 ---
 
